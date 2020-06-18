@@ -14,7 +14,7 @@
     "react"
   ],
   "scripts": {
-    "start": "npm-run-all start:**",
+    "start": "run-p start:**",
     "start:gatsby": "gatsby develop -H 0.0.0.0 -o",
     "start:storybook": "start-storybook -p 9000 -c .storybook",
     "build": "run-p 'build:!(storybook)'",
@@ -25,10 +25,10 @@
   },
   "dependencies": {
     "@theme-ui/presets": "^0.3.0",
-    "gatsby": "^2.15.6",
+    "gatsby": "^2.23.4",
     "gatsby-image": "^2.2.17",
     "gatsby-plugin-manifest": "^2.2.14",
-    "gatsby-plugin-offline": "^3.0.2",
+    "gatsby-plugin-offline": "^3.2.10",
     "gatsby-plugin-react-helmet": "^3.1.6",
     "gatsby-plugin-root-import": "^2.0.5",
     "gatsby-plugin-sharp": "^2.2.19",
