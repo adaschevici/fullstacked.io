@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
-import reset from 'styled-reset-advanced';
+import { createGlobalStyle } from 'styled-components'
+import reset from 'styled-reset-advanced'
 
 export default createGlobalStyle`
   ${reset};
@@ -8,4 +8,4 @@ export default createGlobalStyle`
     font-family: 'Avenir Next', 'Helvetica Neue', 'Helvetica', sans-serif;
     font-weight: 500;
   }
-`;
+`
