@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { Box, Flex, Link, useColorMode, jsx } from 'theme-ui'
+import LogoV2 from '../logo/v2'
 
 const Footer = () => {
   const [colorMode, setColorMode] = useColorMode()
@@ -36,12 +37,7 @@ const Footer = () => {
           a: { color: `text` },
         }}
       >
-        <img
-          width="30"
-          height="30"
-          src="https://img.artur.wtf/logo_w30.png"
-          alt="FullStacked.io Logo"
-        />
+        <LogoV2 outerWidth={30} marginRight={5} marginTop={5} />
         {` `}
         <Link
           aria-label="Link to the theme's GitHub repository"
