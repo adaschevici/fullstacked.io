@@ -24,7 +24,7 @@ const Decorator = (storyFn) => (
 
 addDecorator(Decorator)
 
-const channel = addons.getChannel()
+export const channel = addons.getChannel()
 
 const ThemeChanger = () => {
   const [_, setColorMode] = useColorMode()
