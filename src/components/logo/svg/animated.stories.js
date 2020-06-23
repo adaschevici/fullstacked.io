@@ -3,8 +3,8 @@ import { storiesOf } from '@storybook/react'
 
 import Animated from './animated'
 
-storiesOf('Elements|Logo', module).add('V2', () => (
-  <div style={{ width: '300px', height: '300px' }}>
-    <Animated />
+storiesOf('Elements|Logo', module).add('Logo Image', () => (
+  <div style={{ position: 'relative', width: '300px', height: '300px' }}>
+    <Animated width="150px" />
   </div>
 ))

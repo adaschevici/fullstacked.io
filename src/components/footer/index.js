@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { Box, Flex, Link, useColorMode, jsx } from 'theme-ui'
-import LogoV2 from '../logo/v2'
+import Logo from '../logo'
 
 const Footer = () => {
   const [colorMode, setColorMode] = useColorMode()
@@ -37,7 +37,7 @@ const Footer = () => {
           a: { color: `text` },
         }}
       >
-        <LogoV2 outerWidth={30} marginRight={5} marginTop={5} />
+        <Logo outerWidth={30} marginRight={5} marginTop={5} />
         {` `}
         <Link
           aria-label="Link to the theme's GitHub repository"

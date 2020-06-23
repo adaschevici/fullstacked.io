@@ -1,16 +1,16 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import LogoV1 from '.'
+import Logo from '.'
 
-storiesOf('Elements|LogoCompositeV1', module)
+storiesOf('Elements|LogoComposite', module)
   .add('Default', () => (
     <div style={{ width: '150px', height: '150px' }}>
-      <LogoV1 outerWidth={350} marginRight={50} />
+      <Logo outerWidth={350} />
     </div>
   ))
   .add('With Writing', () => (
     <div style={{ width: '150px', height: '150px' }}>
-      <LogoV1 outerWidth={350} marginRight={50} withWriting />
+      <Logo outerWidth={350} withWriting />
     </div>
   ))

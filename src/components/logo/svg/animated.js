@@ -10,6 +10,7 @@ const Frame = styled.div`
   transform: translate(-50%, -50%);
   width: ${({ width }) => width};
 `
+
 export default ({ width }) => (
   <Frame width={width}>
     <img src={Logo} />
