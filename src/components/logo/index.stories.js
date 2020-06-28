@@ -29,12 +29,12 @@ storiesOf('Elements|LogoComposite', module)
   .add('Default', () => (
     <div style={{ width: '150px', height: '150px' }}>
       <ModeSelect channel={channel} />
-      <Logo outerWidth={350} />
+      <Logo outerWidth={350} positioned />
     </div>
   ))
   .add('With Writing', () => (
     <div style={{ width: '150px', height: '150px' }}>
       <ModeSelect channel={channel} />
-      <Logo outerWidth={350} withWriting />
+      <Logo outerWidth={350} positioned withWriting />
     </div>
   ))

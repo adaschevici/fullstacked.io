@@ -37,7 +37,7 @@ const Footer = () => {
           a: { color: `text` },
         }}
       >
-        <Logo outerWidth={30} marginRight={5} marginTop={5} />
+        <Logo outerWidth={30} marginRight={5} marginTop={5} positioned />
         {` `}
         <Link
           aria-label="Link to the theme's GitHub repository"

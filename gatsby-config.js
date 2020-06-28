@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Storybook Starter',
+    title: 'FullStacked 🚀 IO',
   },
   plugins: [
     {
@@ -12,7 +12,7 @@ module.exports = {
         background_color: '#ffffff',
         theme_color: '#ffffff',
         display: 'standalone',
-        icon: 'src/assets/logos/icon.png',
+        icon: 'src/assets/logos/animated.svg',
       },
     },
     {

@@ -16,10 +16,10 @@ const Wrapper = styled.div`
 `
 
 const Decorator = (storyFn) => (
-  <Wrapper>
+  <div>
     <GlobalStyle />
     {storyFn()}
-  </Wrapper>
+  </div>
 )
 
 addDecorator(Decorator)
