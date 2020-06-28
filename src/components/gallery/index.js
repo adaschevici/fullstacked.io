@@ -11,15 +11,16 @@ export default ({ images }) => (
         <Box
           css={`
             display: inline-block;
-            vertical-align: middle;
             transition: filter 0.3s;
-            padding: 5px;
-            :hover {
-              filter: brightness(87.5%);
-            }
+            position: relative;
+            filter: brightness(47.5%);
           `}
         >
-          <Image width="100vw" fluid={image.childImageSharp.fluid} />
+          <Image
+            height="100vh"
+            width="100vw"
+            fluid={image.childImageSharp.fluid}
+          />
         </Box>
       )
     })}

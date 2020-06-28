@@ -41,6 +41,7 @@ const theme = merge(tailwind, {
     textAlign: `center`,
     display: `block`,
     position: `absolute`,
+    left: [0, '15%', '25%', '40%', '45%'],
     bottom: 0,
     color: `textMuted`,
     px: [2, 3],
@@ -138,6 +139,9 @@ const theme = merge(tailwind, {
         fontSize: [2, 3, 4],
       },
     },
+  },
+  logo: {
+    width: [`250px`, `450px`],
   },
 })
 

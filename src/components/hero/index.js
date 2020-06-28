@@ -5,6 +5,7 @@ import Inner from '../../elements/inner'
 import Content from '../../elements/content'
 
 import Gallery from '../gallery'
+import Logo from '../logo'
 
 const Hero = ({ offset, factor = 1 }) => {
   const data = useStaticQuery(graphql`
@@ -14,8 +15,7 @@ const Hero = ({ offset, factor = 1 }) => {
       ) {
         nodes {
           childImageSharp {
-            fluid {
-              aspectRatio
+            fluid(quality: 100, maxWidth: 4160) {
               ...GatsbyImageSharpFluid_tracedSVG
             }
           }
@@ -34,8 +34,10 @@ const Hero = ({ offset, factor = 1 }) => {
         offset={offset}
         factor={factor}
       >
-        <h1 style={{ margin: '0 45%' }}>FullStacked IO</h1>
         <Gallery images={images} />
+        <Inner>
+          <Logo withWriting outerWidth={380} />
+        </Inner>
       </Content>
     </div>
   )
