@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Logo from './animated.svg'
+import Logo from '../../../assets/logos/animated.svg'
 
 const Frame = styled.div`
   position: absolute;

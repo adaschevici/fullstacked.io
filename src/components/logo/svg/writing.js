@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Writing from './writing.svg'
+import Writing from '../../../assets/logos/writing.svg'
 
 const Frame = styled.div`
   position: absolute;

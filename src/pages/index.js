@@ -1,13 +1,15 @@
 import React from 'react'
-import styled from 'styled-components'
-
+import { Parallax } from 'react-spring/renderprops-addons.cjs'
 import Layout from '../global/Layout'
-import Aside from '../components/aside'
+import Hero from '../components/hero'
 import Footer from '../components/footer'
 
 const IndexPage = () => (
   <Layout>
-    <Footer />
+    <Parallax pages={2}>
+      <Hero />
+      <Footer />
+    </Parallax>
   </Layout>
 )
 
