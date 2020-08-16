@@ -42,8 +42,10 @@ const ThemeChanger = () => {
 const ThemeWrapper = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
-      <ThemeChanger />
-      {children}
+      <Wrapper>
+        <ThemeChanger />
+        {children}
+      </Wrapper>
     </ThemeProvider>
   )
 }

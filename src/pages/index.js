@@ -6,7 +6,7 @@ import Footer from '../components/footer'
 
 const IndexPage = () => (
   <Layout>
-    <Parallax pages={2}>
+    <Parallax pages={3}>
       <Hero />
       <Footer />
     </Parallax>

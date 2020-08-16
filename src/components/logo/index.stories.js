@@ -24,7 +24,7 @@ channel.addListener('storybookjs/knobs/change', ({ value }) =>
 
 const _ = select(label, options, defaultValue, groupId)
 
-storiesOf('Elements|LogoComposite', module)
+storiesOf('Elements/LogoComposite', module)
   .addDecorator(withKnobs)
   .add('Default', () => (
     <div style={{ width: '150px', height: '150px' }}>

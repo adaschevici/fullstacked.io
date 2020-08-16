@@ -26,10 +26,9 @@ channel.addListener('storybookjs/knobs/change', ({ value }) =>
   channel.emit('DARK_MODE', value)
 )
 
-storiesOf('Elements|Gallery', module)
+storiesOf('Elements/Gallery', module)
   .addDecorator(withKnobs)
   .add('Hero Gallery', () => {
-    console.log(images)
     return (
       <div style={{ position: 'relative', width: '300px', height: '300px' }}>
         <ModeSelect channel={channel} />

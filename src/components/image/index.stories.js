@@ -22,7 +22,7 @@ channel.addListener('storybookjs/knobs/change', ({ value }) =>
   channel.emit('DARK_MODE', value)
 )
 
-storiesOf('Elements|Image', module)
+storiesOf('Elements/Image', module)
   .addDecorator(withKnobs)
   .add('Hero Gallery Image', () => {
     return (

@@ -21,7 +21,7 @@ channel.addListener('storybookjs/knobs/change', ({ value }) =>
   channel.emit('DARK_MODE', value)
 )
 
-storiesOf('Elements|Logo', module)
+storiesOf('Elements/Logo', module)
   .addDecorator(withKnobs)
   .add('Logo Image', () => {
     const _ = select(label, options, defaultValue, groupId)

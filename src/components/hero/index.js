@@ -24,22 +24,19 @@ const Hero = ({ offset, factor = 1 }) => {
     }
   `)
   const images = data.allFile.nodes
-  console.log(images)
 
   return (
-    <div>
-      <Content
-        sx={{ variant: `texts.bigger` }}
-        speed={0.4}
-        offset={offset}
-        factor={factor}
-      >
-        <Gallery images={images} />
-        <Inner>
-          <Logo withWriting outerWidth={380} />
-        </Inner>
-      </Content>
-    </div>
+    <Content
+      sx={{ variant: `texts.bigger` }}
+      speed={0.4}
+      offset={offset}
+      factor={factor}
+    >
+      <Gallery images={images} />
+      <Inner>
+        <Logo withWriting outerWidth={380} />
+      </Inner>
+    </Content>
   )
 }
 
