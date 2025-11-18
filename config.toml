@@ -1,3 +1,5 @@
+title = "~/full-stacked"
+theme = "tabi"
 # The URL the site will be built for
 base_url = "https://fullstacked.io"
 
@@ -14,3 +16,7 @@ highlight_code = true
 
 [extra]
 # Put all your custom variables here
+favicon = "favicon.ico"
+enable_csp = false
+header = {title = "Hello! I'm the gitbadger", img = "static/original.png", img_alt = "Artur Das" }
+stylesheets = ["css/upstream-overrides.css"]
