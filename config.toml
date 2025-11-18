@@ -17,6 +17,5 @@ highlight_code = true
 [extra]
 # Put all your custom variables here
 favicon = "favicon.ico"
-# enable_csp = false
-header = {title = "Hello! I'm the gitbadger", img = "static/original.png", img_alt = "Artur Das" }
+enable_csp = false
 stylesheets = ["css/upstream-overrides.css"]
