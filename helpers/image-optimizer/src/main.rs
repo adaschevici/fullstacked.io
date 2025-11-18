@@ -31,6 +31,14 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args = Cli::parse();
     println!("{:?}", args);
     // Path to the input JPG image
+    let mut static_paths: Vec<Params> = glob("static/**/*.png")?
+        .filter_map(Result::ok)
+        .map(|path| Params {
+            path,
+            should_recreate: args.recreate,
+            ..Default::default()
+        })
+        .collect();
     let mut input_paths: Vec<Params> = glob("content/**/*.png")?
         .filter_map(Result::ok)
         .map(|path| Params {
@@ -39,14 +47,14 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             ..Default::default()
         })
         .collect();
-    let theme_image_paths: Vec<Params> = glob("themes/**/*.jpg")?
-        .filter_map(Result::ok)
-        .map(|path| Params {
-            path,
-            should_recreate: args.recreate,
-            should_resize: true,
-        })
-        .collect();
+    // let theme_image_paths: Vec<Params> = glob("themes/**/*.jpg")?
+    //     .filter_map(Result::ok)
+    //     .map(|path| Params {
+    //         path,
+    //         should_recreate: args.recreate,
+    //         should_resize: true,
+    //     })
+    //     .collect();
     let otherext_image_paths: Vec<Params> = glob("content/**/*.webp")?
         .filter_map(Result::ok)
         .map(|path| Params {
@@ -55,10 +63,11 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             ..Default::default()
         })
         .collect();
-    input_paths.extend(theme_image_paths);
-    input_paths.extend(otherext_image_paths);
-    println!("{:?}", input_paths);
-    input_paths.into_par_iter().map(handle).collect::<Vec<_>>();
+    static_paths.extend(theme_image_paths);
+    // static_paths.extend(theme_image_paths);
+    static_paths.extend(otherext_image_paths);
+    println!("{:?}", static_paths);
+    static_paths.into_par_iter().map(handle).collect::<Vec<_>>();
     Ok(())
 }
 
