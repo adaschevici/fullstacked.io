@@ -63,7 +63,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             ..Default::default()
         })
         .collect();
-    static_paths.extend(theme_image_paths);
+    static_paths.extend(input_paths);
     // static_paths.extend(theme_image_paths);
     static_paths.extend(otherext_image_paths);
     println!("{:?}", static_paths);
