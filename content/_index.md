@@ -3,7 +3,7 @@ title = "Latest posts"
 sort_by = "date"
 
 [extra]
-header = {title = "Hello, I am the gitbadger", img = "original.png", img_alt = "Óscar Fernández, the theme's author" }
+header = {title = "Hello, I am the gitbadger", img = "original.png", img_alt = "I, Gitbadger" }
 section_path = "blog/_index.md"
 max_posts = 4
 projects_path = "projects/_index.md"
