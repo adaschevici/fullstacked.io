@@ -17,5 +17,5 @@ highlight_code = true
 [extra]
 # Put all your custom variables here
 favicon = "favicon.ico"
-enable_csp = false
+# enable_csp = false
 stylesheets = ["css/upstream-overrides.css"]
