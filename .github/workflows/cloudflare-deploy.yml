@@ -1,0 +1,109 @@
+name: Build and Deploy Zola Site
+
+on:
+  push:
+    branches:
+      - main # Change this to the branch you want to trigger the action
+  pull_request:
+    branches:
+      - main # Optional: Change this to the branch you want to trigger the action for PRs
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository and Submodules 🚀
+        uses: actions/checkout@v5
+        with:
+          # This line is the crucial addition.
+          # It initializes and updates all submodules recursively.
+          submodules: true
+
+      - name: Cache APT packages
+        uses: actions/cache@v4
+        with:
+          path: /var/cache/apt/archives/*.deb
+          key: ${{ runner.os }}-apt-${{ hashFiles('**/apt-packages.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-apt-cache-
+
+      - name: Determine if deploy is needed
+        id: changes
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            deploy:
+              - 'content/**'
+              - 'templates/**'
+              - 'static/**'
+
+      - name: Install OS Dependencies (if needed)
+        run: |
+          # Create a file listing your required packages, one per line.
+          cat > apt-packages.txt << EOF
+          nasm
+          EOF
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends $(cat apt-packages.txt)
+
+      - name: Cache Rust toolchain
+        uses: actions/cache@v4
+        with:
+          path: ~/.rustup
+          key: ${{ runner.os }}-rustup-${{ hashFiles('rust-toolchain') }}
+          restore-keys: |
+            ${{ runner.os }}-rustup-
+
+      - name: Install Rust
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+          rustup toolchain install nightly
+          rustup default nightly
+          echo "$HOME/.cargo/bin" >> $GITHUB_PATH
+
+      - name: Verify Rust Installation
+        run: |
+          rustup --version
+          rustc --version
+          cargo --version
+
+      - name: Cache Cargo dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            ./helpers/image-optimizer/target
+          key: ${{ runner.os }}-manual-cargo-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: Build CLI tool
+        run: |
+          cargo build --manifest-path ./helpers/image-optimizer/Cargo.toml --release --verbose
+
+      - name: Perform the optimization
+        run: ./helpers/image-optimizer/target/release/image-optimizer
+
+      - name: Install Zola
+        run: |
+          curl -L https://github.com/getzola/zola/releases/download/v0.21.0/zola-v0.21.0-x86_64-unknown-linux-gnu.tar.gz -o zola.tar.gz
+          tar -xzf zola.tar.gz
+          sudo mv zola /usr/local/bin/
+          zola --version
+
+      - name: Build the site
+        run: zola build
+
+      - name: Install Wrangler CLI
+        run: npm install -g wrangler
+
+      - name: Publish to Cloudflare Pages
+        if: steps.changes.outputs.deploy == 'true' && github.ref == 'refs/heads/main'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          wrangler pages deploy public --project-name=artur-wtf --branch=main
+
